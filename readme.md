@@ -8,4 +8,4 @@ TOUCH: TAP AND HOLDS on your left or right
 Choose your directions wisely, calculate the jump charge and do the leap of faith! Note that The mouse (character) bounces off the wall, use that to land flawlessly.  
 
 #### Download the game to have the best and smoothest experience
-#####[DOWNLOAD](https://keyyard.itch.io/escape-the-sewer)
+####[DOWNLOAD](https://keyyard.itch.io/escape-the-sewer)
