@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://can4ctfonhf1v"]
+
+[ext_resource type="FontFile" uid="uid://dyan4jxaluwer" path="res://Assets/Fonts/mouse.otf" id="1_3tpoe"]
+[ext_resource type="Script" path="res://Global/HiScore.gd" id="2_bnblm"]
+
+[node name="UI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Stats" type="Label" parent="."]
+offset_left = -2.0
+offset_top = 54.0
+offset_right = 722.0
+offset_bottom = 97.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_3tpoe")
+theme_override_font_sizes/font_size = 30
+text = "HiScore
+"
+script = ExtResource("2_bnblm")
