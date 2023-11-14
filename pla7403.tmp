@@ -1,0 +1,65 @@
+[gd_scene load_steps=9 format=3 uid="uid://df83dt3mr6n7g"]
+
+[ext_resource type="PackedScene" uid="uid://8srgss40dpq3" path="res://bg.tscn" id="1_4pc7s"]
+[ext_resource type="Script" path="res://mouse.gd" id="2_crcja"]
+[ext_resource type="Texture2D" uid="uid://dc048aecl3apx" path="res://Assets/Characters Sprite Sheet/Mouse Char.png" id="2_yt4r2"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ydhcd"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_81ufp"]
+atlas = ExtResource("2_yt4r2")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e4hf3"]
+atlas = ExtResource("2_yt4r2")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7hin7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_81ufp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e4hf3")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p2huk"]
+size = Vector2(733.25, 24)
+
+[node name="playing" type="Node2D"]
+
+[node name="bg" parent="." instance=ExtResource("1_4pc7s")]
+
+[node name="mouse" type="CharacterBody2D" parent="."]
+position = Vector2(186, 1065)
+scale = Vector2(2.5, 2.5)
+script = ExtResource("2_crcja")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="mouse"]
+shape = SubResource("CapsuleShape2D_ydhcd")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="mouse"]
+position = Vector2(0, -4)
+sprite_frames = SubResource("SpriteFrames_7hin7")
+animation = &"idle"
+frame_progress = 0.916566
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="mouse"]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="Panel" type="Panel" parent="StaticBody2D"]
+offset_left = -14.0
+offset_top = 1240.0
+offset_right = 26.0
+offset_bottom = 1280.0
+scale = Vector2(18.44, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(354.375, 1257)
+shape = SubResource("RectangleShape2D_p2huk")

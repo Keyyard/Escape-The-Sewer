@@ -1,0 +1,294 @@
+[gd_scene load_steps=23 format=3 uid="uid://cdrek7mhx6ur0"]
+
+[ext_resource type="PackedScene" uid="uid://8srgss40dpq3" path="res://bg.tscn" id="1_4pc7s"]
+[ext_resource type="Script" path="res://Camera2D.gd" id="2_85vq6"]
+[ext_resource type="Script" path="res://mouse.gd" id="2_crcja"]
+[ext_resource type="Texture2D" uid="uid://dc048aecl3apx" path="res://Assets/Characters Sprite Sheet/Mouse Char.png" id="2_yt4r2"]
+[ext_resource type="Script" path="res://PlatformsSpawn.gd" id="4_204qw"]
+[ext_resource type="PackedScene" uid="uid://b7u31fq6tkcf5" path="res://platform.tscn" id="5_ehjpl"]
+[ext_resource type="PackedScene" uid="uid://cic15kputvfgg" path="res://Global/display.tscn" id="8_i2yjj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rg83n"]
+size = Vector2(13.726, 24.2263)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_81ufp"]
+atlas = ExtResource("2_yt4r2")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e4hf3"]
+atlas = ExtResource("2_yt4r2")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m54hi"]
+atlas = ExtResource("2_yt4r2")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e5fhe"]
+atlas = ExtResource("2_yt4r2")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dgojl"]
+atlas = ExtResource("2_yt4r2")
+region = Rect2(64, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7hin7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_81ufp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e4hf3")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m54hi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e5fhe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dgojl")
+}],
+"loop": true,
+"name": &"jump",
+"speed": 5.0
+}]
+
+[sub_resource type="Animation" id="Animation_nuljx"]
+resource_name = "Fall"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"jump"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
+}
+
+[sub_resource type="Animation" id="Animation_tp4ji"]
+resource_name = "Idle"
+length = 0.7
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"idle"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.33),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
+[sub_resource type="Animation" id="Animation_m2yf7"]
+resource_name = "Jump"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"jump"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
+[sub_resource type="Animation" id="Animation_hadrw"]
+resource_name = "Jump_Prepare"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"jump"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_o64m3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mfyuy"]
+_data = {
+"Fall": SubResource("Animation_nuljx"),
+"Idle": SubResource("Animation_tp4ji"),
+"Jump": SubResource("Animation_m2yf7"),
+"Jump_Prepare": SubResource("Animation_hadrw"),
+"RESET": SubResource("Animation_o64m3")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p2huk"]
+size = Vector2(733.25, 24)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_drnmg"]
+size = Vector2(20, 49.4487)
+
+[node name="playing" type="Node2D"]
+position = Vector2(0, -293)
+
+[node name="bg" parent="." instance=ExtResource("1_4pc7s")]
+
+[node name="Camera2D" type="Camera2D" parent="bg"]
+position = Vector2(360, 475)
+script = ExtResource("2_85vq6")
+
+[node name="UI" parent="bg" instance=ExtResource("8_i2yjj")]
+
+[node name="mouse" type="CharacterBody2D" parent="."]
+position = Vector2(186, 1065)
+scale = Vector2(2.5, 2.5)
+script = ExtResource("2_crcja")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="mouse"]
+position = Vector2(3.2, 2.39572)
+scale = Vector2(1.10739, 0.759157)
+shape = SubResource("RectangleShape2D_rg83n")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="mouse"]
+position = Vector2(0, -4)
+sprite_frames = SubResource("SpriteFrames_7hin7")
+animation = &"jump"
+frame = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="mouse"]
+libraries = {
+"": SubResource("AnimationLibrary_mfyuy")
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="Panel" type="Panel" parent="StaticBody2D"]
+offset_left = -15.0
+offset_top = 1321.0
+offset_right = 25.0
+offset_bottom = 1361.0
+scale = Vector2(18.44, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(356, 1339)
+shape = SubResource("RectangleShape2D_p2huk")
+
+[node name="Walls" type="Node2D" parent="."]
+
+[node name="Area2D2" type="Area2D" parent="Walls"]
+position = Vector2(716, 3)
+
+[node name="wall" type="CollisionShape2D" parent="Walls/Area2D2"]
+position = Vector2(-5, 464.7)
+scale = Vector2(1, 31.56)
+shape = SubResource("RectangleShape2D_drnmg")
+
+[node name="Area2D" type="Area2D" parent="Walls"]
+
+[node name="wall" type="CollisionShape2D" parent="Walls/Area2D"]
+position = Vector2(5, 468)
+scale = Vector2(1, 31.56)
+shape = SubResource("RectangleShape2D_drnmg")
+
+[node name="Wall" type="StaticBody2D" parent="Walls"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Wall"]
+position = Vector2(0, 464.7)
+scale = Vector2(1, 31.56)
+shape = SubResource("RectangleShape2D_drnmg")
+
+[node name="Wall2" type="StaticBody2D" parent="Walls"]
+position = Vector2(716, 3)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Wall2"]
+position = Vector2(0, 464.7)
+scale = Vector2(1, 31.56)
+shape = SubResource("RectangleShape2D_drnmg")
+
+[node name="PlatformsSpawn" type="Node2D" parent="."]
+position = Vector2(11, 61)
+script = ExtResource("4_204qw")
+
+[node name="Timer" type="Timer" parent="PlatformsSpawn"]
+autostart = true
+
+[node name="Platform" parent="." instance=ExtResource("5_ehjpl")]
+position = Vector2(201, 1176)
+
+[connection signal="body_entered" from="Walls/Area2D2" to="mouse" method="_on_area_2d_2_body_entered"]
+[connection signal="body_entered" from="Walls/Area2D" to="mouse" method="_on_area_2d_body_entered"]
+[connection signal="timeout" from="PlatformsSpawn/Timer" to="PlatformsSpawn" method="_on_timer_timeout"]

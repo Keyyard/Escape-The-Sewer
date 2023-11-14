@@ -1,0 +1,59 @@
+[gd_scene load_steps=5 format=3 uid="uid://du781gt2ek2jk"]
+
+[ext_resource type="FontFile" uid="uid://dyan4jxaluwer" path="res://Assets/Fonts/mouse.otf" id="1_h6xpx"]
+[ext_resource type="Script" path="res://Button.gd" id="2_jo2dq"]
+[ext_resource type="PackedScene" uid="uid://8srgss40dpq3" path="res://bg.tscn" id="3_wr07l"]
+[ext_resource type="PackedScene" uid="uid://cic15kputvfgg" path="res://Global/display.tscn" id="4_x8e4t"]
+
+[node name="StartScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="UI" parent="." instance=ExtResource("4_x8e4t")]
+layout_mode = 1
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = -1.0
+offset_top = 307.0
+offset_right = 723.0
+offset_bottom = 350.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_h6xpx")
+theme_override_font_sizes/font_size = 70
+text = "ESCAPE THE SEWER"
+horizontal_alignment = 1
+
+[node name="tap2play" type="Label" parent="."]
+modulate = Color(1, 0.603922, 0.176471, 1)
+layout_mode = 0
+offset_top = 814.0
+offset_right = 724.0
+offset_bottom = 861.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_h6xpx")
+theme_override_font_sizes/font_size = 40
+text = "TAP TO PLAY"
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = -58.0
+offset_top = -127.0
+offset_right = 663.0
+offset_bottom = 882.0
+scale = Vector2(1.18402, 1.5495)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_h6xpx")
+theme_override_font_sizes/font_size = 30
+flat = true
+icon_alignment = 1
+script = ExtResource("2_jo2dq")
+
+[node name="bg" parent="." instance=ExtResource("3_wr07l")]
+
+[connection signal="pressed" from="Button" to="Button" method="_on_pressed"]
