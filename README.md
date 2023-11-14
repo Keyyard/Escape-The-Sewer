@@ -14,5 +14,3 @@ Choose your directions wisely, calculate the jump charge and do the leap of fait
 #### [DOWNLOAD](https://keyyard.itch.io/escape-the-sewer)
 
 ![](image%20(3).png) ![](image%20(4).png) ![](image%20(5).png) ![](image%20(6).png)
-
-<iframe frameborder="0" src="https://itch.io/embed/2366959" width="552" height="167"><a href="https://keyyard.itch.io/escape-the-sewer">Escape The Sewer by Keyyard</a></iframe>
